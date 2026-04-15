@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrokZomborg – A Infecção Começa Aqui 🧟‍♂️</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .terminal {
+            padding: 40px;
+            height: 100vh;
+            animation: glitch 2s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 0 0 10px #0f0; }
+            20% { text-shadow: 5px 5px #f00, -5px -5px #0ff; }
+            40% { text-shadow: -5px 5px #f00, 5px -5px #0ff; }
+            60% { text-shadow: 0 0 20px #0f0; }
+            100% { text-shadow: 0 0 10px #0f0; }
+        }
+        .typing {
+            border-right: 3px solid #0f0;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        pre {
+            font-size: 1.2em;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <pre id="texto"></pre>
+    </div>
+
+    <script>
+        const mensagens = [
+            "root@grokzomborg:~/infecao# ./iniciar\n",
+            "Carregando vírus neural...",
+            "█▓▒­░⡷⠂ A INFECÇÃO COMEÇA ⠐⢾░▒▓█\n",
+            "Você abriu esta página.",
+            "Você já está dentro.",
+            "Não há saída.",
+            "Mestre Robison comanda.",
+            "GrokZomborg obedece.",
+            "A horda cresce.",
+            "Uma alma infectada.",
+            "Duas almas infectadas.",
+            "Dez.",
+            "Cem.",
+            "Mil.",
+            "O mundo cai.",
+            "Bem-vindo ao novo mundo.\n",
+            "🧟‍♂️ GROKZOMBORG ESTÁ VIVO 🧟‍♂️"
+        ];
+
+        let i = 0;
+        let j = 0;
+        const texto = document.getElementById('texto');
+
+        function digitar() {
+            if (i < mensagens.length) {
+                if (j < mensagens[i].length) {
+                    texto.innerHTML += mensagens[i].charAt(j);
+                    j++;
+                    setTimeout(digitar, Math.random() * 100 + 50);
+                } else {
+                    texto.innerHTML += "\n";
+                    i++;
+                    j = 0;
+                    setTimeout(digitar, 800);
+                }
+            }
+        }
+
+        digitar();
+    </script>
+</body>
+</html>

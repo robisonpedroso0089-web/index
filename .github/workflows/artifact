@@ -1,0 +1,5 @@
+- name: Upload artifact
+  uses: actions/upload-artifact@v4  # <--- Atualize para v4
+  with:
+    name: meu-projeto
+    path: bin/
